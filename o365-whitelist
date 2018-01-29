@@ -1,0 +1,40 @@
+nodes:
+  wl-Static-URL-Entries:
+    inputs: []
+    output: true
+    prototype: stdlib.listURLGeneric
+  office365_IPv4s:
+    inputs:
+      - office365_ipv4aggregator
+    output: false
+    prototype: stdlib.feedHCWithValue
+  office365_IPv6s:
+    inputs:
+      - office365_ipv6aggregator
+    output: false
+    prototype: stdlib.feedHCWithValue
+  office365_URLaggregator:
+    inputs:
+      - office365_any
+      - wl-Static-URL-Entries
+    output: true
+    prototype: stdlib.aggregatorURL
+  office365_URLs:
+    inputs:
+      - office365_URLaggregator
+    output: false
+    prototype: stdlib.feedHCWithValue
+  office365_ipv4aggregator:
+    inputs:
+      - office365_any
+    output: true
+    prototype: stdlib.aggregatorIPv4Generic
+  office365_ipv6aggregator:
+    inputs:
+      - office365_any
+    output: true
+    prototype: stdlib.aggregatorIPv6Simple
+  office365_any:
+    inputs: []
+    output: true
+    prototype: office365.any
